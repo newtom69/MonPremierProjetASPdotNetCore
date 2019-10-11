@@ -1,11 +1,30 @@
-﻿@{
+﻿@using System.Globalization
+@using MonPremierProjetASPdotNetCore.Models;
+@{
     ViewData["Title"] = "Home Page";
 }
+@model List<Article>;
 
-<div class="text-center">
-    <h2>Premier projet Asp.net Core MVC de</h2>
-    <h3><a href="https://www.linkedin.com/in/thomas-vuille/" target="_blank">Thomas Vuille</a></h3>
-    <img src="Images/asp.net-core-mvc.png" alt="Asp.net Core MVC" />
-    <h4>et le <a href="https://github.com/newtom69/MonPremierProjetASPdotNetCore" target="_blank">Github</a> qui va avec</h4>
-    <p>(c'est que le début hein !)</p>
-</div>
+
+    <div>
+        <h2>Premier projet Asp.net Core MVC de</h2>
+        <h3><a href="https://www.linkedin.com/in/thomas-vuille/" target="_blank">Thomas Vuille</a></h3>
+        <img src="Images/asp.net-core-mvc.png" alt="Asp.net Core MVC" />
+        <h4>et le <a href="https://github.com/newtom69/MonPremierProjetASPdotNetCore" target="_blank">Github</a> qui va avec</h4>
+        <p>(le développeur frontend est en vacances...)</p>
+    </div>
+
+<section class="notreCarte">
+    @foreach (var article in Model)
+{
+    <div>
+        <img src="/Images/@article.Image" alt="@article.Nom" />
+        <div class="articleDescription">
+            <h2>@article.Nom</h2>
+            <p class="prix_submit">
+                <span class="prix">@article.Prix.ToString("C2", new CultureInfo("fr-FR"))</span>
+            </p>
+        </div>
+    </div>
+}
+</section>

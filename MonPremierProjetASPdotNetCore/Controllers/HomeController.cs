@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MonPremierProjetASPdotNetCore.DAL;
 using MonPremierProjetASPdotNetCore.Models;
 
 namespace MonPremierProjetASPdotNetCore.Controllers
@@ -12,7 +13,9 @@ namespace MonPremierProjetASPdotNetCore.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            ArticlesDAL articlesDAL = new ArticlesDAL();
+            List<Article> articles = articlesDAL.ListerRandom(6, 14);
+            return View(articles);
         }
 
         public IActionResult Privacy()
