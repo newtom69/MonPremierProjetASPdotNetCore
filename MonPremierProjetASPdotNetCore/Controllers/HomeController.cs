@@ -14,7 +14,7 @@ namespace MonPremierProjetASPdotNetCore.Controllers
         public IActionResult Index()
         {
             ArticlesDAL articlesDAL = new ArticlesDAL();
-            List<Article> articles = articlesDAL.ListerRandom(6, 14);
+            List<Article> articles = articlesDAL.ListerTout(50);
             return View(articles);
         }
 

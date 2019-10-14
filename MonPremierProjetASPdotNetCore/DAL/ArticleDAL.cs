@@ -69,28 +69,6 @@ namespace MonPremierProjetASPdotNetCore.DAL
                 }
             }
         }
-        internal void ReferencerArticle(int id)
-        {
-            using (FoodtrucklyonDbContext db = new FoodtrucklyonDbContext())
-            {
-                Article larticle = (from article in db.Article
-                                    where article.Id == id
-                                    select article).FirstOrDefault();
-                larticle.DansCarte = true;
-                db.SaveChanges();
-            }
-        }
-        internal void DereferencerArticle(int id)
-        {
-            using (FoodtrucklyonDbContext db = new FoodtrucklyonDbContext())
-            {
-                Article larticle = (from article in db.Article
-                                    where article.Id == id
-                                    select article).FirstOrDefault();
-                larticle.DansCarte = false;
-                db.SaveChanges();
-            }
-        }
     }
 
 

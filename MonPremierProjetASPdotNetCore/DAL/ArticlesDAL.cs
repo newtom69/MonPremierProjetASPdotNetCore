@@ -38,5 +38,18 @@ namespace MonPremierProjetASPdotNetCore.DAL
                 return articles;
             }
         }
+
+        public List<Article> ListerTout(int nombreMax = 200)
+        {
+            using (FoodtrucklyonDbContext db = new FoodtrucklyonDbContext())
+            {
+                List<Article> articles = (from article in db.Article
+                                          orderby article.FamilleId, article.Nom
+                                          select article)
+                                          .Take(nombreMax)
+                                          .ToList();
+                return articles;
+            }
+        }
     }
 }
